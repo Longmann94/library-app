@@ -1,26 +1,117 @@
 body {
+  font-family: Arial;
   height: 100vh;
   width: 100vw;
   margin: 0 auto;
 }
 
 .main-grid-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
   display: grid;
-  grid-template: 1fr 3fr/ 1fr;
+  grid-template: 150px 3fr/ 1fr;
+}
+
+.topbar-container {
+  background: azure;
+  display: grid;
+  box-shadow: 1px 1px 2px grey;
 }
 
 .book-display-container {
   display: grid;
-  grid-template: repeat(5, 1fr) / repeat(5, 1fr);
+  grid-template: 1fr / repeat(5, 1fr);
   grid-auto-rows: 1fr;
+  padding: 1rem;
+  gap: 1rem;
 }
 
 .book-display-container div {
+  max-height: 250px;
+  min-height: 300px;
   display: grid;
-  grid-template: 2fr 1fr / 1fr;
+  grid-template: 1fr 1fr 1fr / 1fr;
   background: snow;
   box-shadow: 1px 1px 3px grey;
   border-radius: 5px;
   padding: 1rem;
   justify-self: center;
+}
+
+.addBook {
+  justify-self: center;
+  align-self: center;
+  height: 50px;
+  width: 200px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 1px 1px 3px grey;
+  background: royalblue;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.bookcard-btn{
+  padding: 0.35rem;
+  margin: 0.35rem;
+  border-radius: 5px;
+}
+
+.bookcard-btn-green{
+  background: mediumspringgreen;
+}
+
+.bookcard-btn-red{
+  background: salmon;
+}
+
+[data-type="title"] {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+[data-type="title"] p {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.form-popup{
+ display: none;
+ position: absolute;
+ left: 0;
+ right: 0;
+ top: 30vh;
+ margin-left: auto;
+ margin-right: auto;
+ width: 300px;
+ height: 330px;
+ background: SpringGreen;
+ padding: 1rem;
+ border-radius: 75px;
+}
+
+.form-popup input{
+  height: 30px;
+  width: 200px;
+  justify-self: center;
+}
+
+.form-popup label{
+  justify-self: center;
+}
+
+.submit-book {
+  height: 30px;
+  width: 100px;
+  border: none;
+  box-shadow: 1px 1px 3px grey;
+  background: royalblue;
+  color: white;
+  align-self: center;
+  justify-self:  center;
+  text-align: center;
+  padding: 0.4rem;
+  border-radius: 10px;
 }
