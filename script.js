@@ -23,6 +23,10 @@ function addBookToLibrary() {
 
   updateLibrary();
   document.querySelector(".form-popup").style.display = "none";
+  document.querySelector(".topbar-container").style.filter= "";
+  document.querySelector(".topbar-container").style.opacity= "";
+  document.querySelector(".book-display-container").style.filter= "";
+  document.querySelector(".book-display-container").style.opacity= "";
 }
 
 function updateLibrary() {
@@ -110,5 +114,15 @@ function addBooktoLibrary1(e){
   console.log(inputVal);
 }
 
-addBookButton.addEventListener("mouseup", () => document.querySelector(".form-popup").style.display = "grid");
+function formPopup(){
+
+  document.querySelector(".topbar-container").style.filter= "blur(3px) grayscale(100%)";
+  document.querySelector(".topbar-container").style.opacity= "0.5";
+  document.querySelector(".book-display-container").style.filter= "blur(3px) grayscale(100%)";
+  document.querySelector(".book-display-container").style.opacity= "0.5";
+  document.querySelector(".form-popup").style.display = "grid";
+  document.querySelector(".form-popup").style.opacity = "1";
+}
+
+addBookButton.addEventListener("mouseup", formPopup);
 addBookButton1.addEventListener("mouseup", addBookToLibrary);
