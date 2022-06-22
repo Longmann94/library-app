@@ -1,4 +1,3 @@
-
 class Book {
   constructor(title, author, pages, doneReading) {
     this.title = title;
@@ -9,20 +8,20 @@ class Book {
 }
 
 class Library {
-  constructor(libraryArr){
+  constructor(libraryArr) {
     this.libraryArr = libraryArr;
   }
 
   updateLibrary() {
     //wipe all displayed books
-    while(displayArea.firstChild){
+    while (displayArea.firstChild) {
       displayArea.removeChild(displayArea.firstChild);
     }
-  //re-filter array for only non-undefined elements to be displayed
-    for(let i = 0; i < libraryArr.length; i++) {
-       if(libraryArr[i] !== undefined){
-         this.displayBook(i);
-       }
+    //re-filter array for only non-undefined elements to be displayed
+    for (let i = 0; i < libraryArr.length; i++) {
+      if (libraryArr[i] !== undefined) {
+        this.displayBook(i);
+      }
     }
   }
 
@@ -36,21 +35,21 @@ class Library {
 
     this.updateLibrary();
     document.querySelector(".form-popup").style.display = "none";
-    document.querySelector(".topbar-container").style.filter= "";
-    document.querySelector(".topbar-container").style.opacity= "";
-    document.querySelector(".book-display-container").style.filter= "";
-    document.querySelector(".book-display-container").style.opacity= "";
+    document.querySelector(".topbar-container").style.filter = "";
+    document.querySelector(".topbar-container").style.opacity = "";
+    document.querySelector(".book-display-container").style.filter = "";
+    document.querySelector(".book-display-container").style.opacity = "";
   }
 
-    //displayBook function creates elements using information stored in myLibrary
-    displayBook(n) {
+  //displayBook function creates elements using information stored in myLibrary
+  displayBook(n) {
     const createDiv = document.createElement("div");
     const createDeleteBtn = document.createElement("button");
     const createReadBtn = document.createElement("button");
     const createP1 = document.createElement("p");
     const createP2 = document.createElement("p");
     const createP3 = document.createElement("p");
-    createDiv.setAttribute("id", "div"+n);
+    createDiv.setAttribute("id", "div" + n);
     displayArea.appendChild(createDiv);
 
     const bookCard = document.querySelector("#div" + n);
@@ -63,12 +62,12 @@ class Library {
     bookCard.appendChild(createP2);
     bookCard.appendChild(createP3);
     createReadBtn.setAttribute("class", "bookcard-btn");
-    createReadBtn.setAttribute("id", "read"+n);
+    createReadBtn.setAttribute("id", "read" + n);
 
-    if(libraryArr[n].doneReading){
+    if (libraryArr[n].doneReading) {
       createReadBtn.classList.add("bookcard-btn-green");
       createReadBtn.textContent = "Done Reading";
-    }else{
+    } else {
       createReadBtn.classList.add("bookcard-btn-red");
       createReadBtn.textContent = "Not done Reading";
     }
@@ -76,18 +75,14 @@ class Library {
     createReadBtn.addEventListener("click", (e) => this.updateReadStatus(e));
     bookCard.appendChild(createReadBtn);
     createDeleteBtn.setAttribute("class", "bookcard-btn");
-    createDeleteBtn.setAttribute("id", "book"+n);
+    createDeleteBtn.setAttribute("id", "book" + n);
     createDeleteBtn.textContent = "Delete Book";
     createDeleteBtn.addEventListener("click", (e) => this.deleteBook(e));
     bookCard.appendChild(createDeleteBtn);
   }
 
-  updateAndDisplayLibrary(){
-    libraryArr.forEach(book => displayBook(book));
-  }
-
   //remove element from myLibrary based on the id of the button created
-  deleteBook(e){
+  deleteBook(e) {
     let bookId = e.target.id;
     let num = bookId.match(/\d/g);
     num = num.join("");
@@ -105,11 +100,11 @@ class Library {
     this.updateLibrary();
   }
 
-  formPopup(){
-    document.querySelector(".topbar-container").style.filter= "blur(3px) grayscale(100%)";
-    document.querySelector(".topbar-container").style.opacity= "0.5";
-    document.querySelector(".book-display-container").style.filter= "blur(3px) grayscale(100%)";
-    document.querySelector(".book-display-container").style.opacity= "0.5";
+  formPopup() {
+    document.querySelector(".topbar-container").style.filter = "blur(3px) grayscale(100%)";
+    document.querySelector(".topbar-container").style.opacity = "0.5";
+    document.querySelector(".book-display-container").style.filter = "blur(3px) grayscale(100%)";
+    document.querySelector(".book-display-container").style.opacity = "0.5";
     document.querySelector(".form-popup").style.display = "grid";
     document.querySelector(".form-popup").style.opacity = "1";
   }
