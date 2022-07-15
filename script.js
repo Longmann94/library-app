@@ -26,19 +26,37 @@ class Library {
   }
 
   addBookToLibrary() {
-    let title = document.getElementById("title").value;
-    let author = document.getElementById("author").value;
-    let pages = document.getElementById("pageNum").value;
-    let doneReading = document.getElementById("readStatus").checked;
-    const book = new Book(title, author, pages, doneReading);
-    libraryArr.push(book);
+    const inputTitle = document.querySelector("#title");
+    const inputAuthor = document.querySelector('#author');
+    const inputPageNum = document.querySelector('#pageNum');
 
-    this.updateLibrary();
-    document.querySelector(".form-popup").style.display = "none";
-    document.querySelector(".topbar-container").style.filter = "";
-    document.querySelector(".topbar-container").style.opacity = "";
-    document.querySelector(".book-display-container").style.filter = "";
-    document.querySelector(".book-display-container").style.opacity = "";
+    if(inputTitle.value === '') {
+      inputTitle.setCustomValidity('Enter a book Title!');
+      inputTitle.reportValidity();
+    }else if(inputAuthor.value === ''){
+      inputAuthor.setCustomValidity('Enter the proper authors name!');
+      inputAuthor.reportValidity();
+    } else if(inputPageNum.value === ''){
+      inputPageNum.setCustomValidity('Enter a number please!');
+      inputPageNum.reportValidity();
+    } else{
+      let title = document.getElementById("title").value;
+      let author = document.getElementById("author").value;
+      let pages = document.getElementById("pageNum").value;
+      let doneReading = document.getElementById("readStatus").checked;
+      const book = new Book(title, author, pages, doneReading);
+      libraryArr.push(book);
+
+      this.updateLibrary();
+      document.querySelector(".form-popup").style.display = "none";
+      document.querySelector(".topbar-container").style.filter = "";
+      document.querySelector(".topbar-container").style.opacity = "";
+      document.querySelector(".book-display-container").style.filter = "";
+      document.querySelector(".book-display-container").style.opacity = "";
+      document.getElementById("title").value = '';
+      document.getElementById("author").value = '';
+      document.getElementById("pageNum").value = '';
+    }
   }
 
   //displayBook function creates elements using information stored in myLibrary
@@ -109,6 +127,8 @@ class Library {
     document.querySelector(".form-popup").style.opacity = "1";
   }
 }
+
+
 
 const displayArea = document.querySelector(".book-display-container");
 const addBookButton = document.querySelector(".addBook");
